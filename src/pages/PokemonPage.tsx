@@ -1,12 +1,7 @@
-import { Typography } from "@mui/material";
+import { PokemonTable } from "../components/PokemonCards";
 
 export function PokemonPage(){
 
     return(
-        <>
-        <Typography variant="h1">
-            hello pokemon
-        </Typography>
-        </>
-    )
+        <PokemonTable/>    )
 }

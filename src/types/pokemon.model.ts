@@ -1,13 +1,19 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-export interface PokemonModel {
+
+export interface listaPokemon{
+    name: string
+    url:string
+}
+
+export interface IPokemon {
     id: number;
     name: string;
     height: number;
     sprites: string;
-    abilities: Habilidade[];
+    abilities: IHabilidade[];
     stats: any[];
 } 
 
-export interface Habilidade {
+export interface IHabilidade {
     effect: string;
 }
