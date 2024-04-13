@@ -1,24 +1,33 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { IPokemon } from "../../types/pokemon.model";
 import { buscarPokemonUrl, listarPokemons } from "../../services/api.service";
+import { RootState } from "../store";
+import { setCount } from "./paginacaoSlice";
 
 
 
-export const pokemonListaThunk = createAsyncThunk('pokemons/list', async ()=>{
+export const pokemonListaThunk = createAsyncThunk('pokemons/list', async (_, config) => {
 
-    const pokemonLista = await listarPokemons()
+    const state = config.getState() as RootState
 
-    if(!pokemonLista){
+    const limit = state.paginacao.itensPerPage
+
+    const offset = (state.paginacao.page - 1) * state.paginacao.itensPerPage;
+
+    const pokemonLista = await listarPokemons(limit, offset)
+
+    if (!pokemonLista) {
         return []
     }
 
+    config.dispatch(setCount(pokemonLista.count))
 
     const pokemons: IPokemon[] = []
 
-    for(const item of pokemonLista.results){
+    for (const item of pokemonLista.results) {
         const pokemon = await buscarPokemonUrl(item.url)
 
-        if(pokemon !== null){
+        if (pokemon !== null) {
             pokemons.push(pokemon)
         }
     }
@@ -28,12 +37,12 @@ export const pokemonListaThunk = createAsyncThunk('pokemons/list', async ()=>{
 
 
 const pokemonSlice = createSlice({
-    name:"pokemons",
-    initialState:[] as IPokemon[],
-    reducers:{},
+    name: "pokemons",
+    initialState: [] as IPokemon[],
+    reducers: {},
     extraReducers: (builder) => {
         builder.addCase(pokemonListaThunk.fulfilled, (_, action) => {
-           return action.payload
+            return action.payload
         });
     }
 })

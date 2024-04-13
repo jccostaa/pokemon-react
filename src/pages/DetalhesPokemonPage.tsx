@@ -1,0 +1,11 @@
+
+
+export function DetalhesPokemonPage(){
+
+
+    return(
+        <>
+        
+        </>
+    )
+}

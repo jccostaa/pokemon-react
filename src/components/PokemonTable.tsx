@@ -1,14 +1,28 @@
-import { Avatar, IconButton, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material"
+import { 
+    Avatar, 
+    IconButton, 
+    Paper, 
+    Table, 
+    TableBody, 
+    TableCell, 
+    TableContainer,
+    TableHead, 
+    TableRow 
+} from "@mui/material"
+
 import { useAppDispatch, useAppSelector } from "../store/hooks"
 import { useEffect } from "react"
 import { pokemonListaThunk } from "../store/slices/pokemonSlice"
-import { Delete, Edit } from "@mui/icons-material"
+
+import AddIcon from '@mui/icons-material/Add';
+import StarIcon from '@mui/icons-material/LocalActivity';
+import { Paginacao } from "./Paginacao";
 
 export function PokemonTable() {
     const dispatch = useAppDispatch()
 
-
     const pokemons = useAppSelector((state) => state.pokemons)
+
 
     useEffect(() => {
         dispatch(pokemonListaThunk())
@@ -26,6 +40,7 @@ export function PokemonTable() {
                         <TableCell>Ações</TableCell>
                     </TableRow>
                 </TableHead>
+
                 <TableBody>
                     {pokemons.map((pokemon) => (
                         <TableRow key={pokemon.id}>
@@ -35,17 +50,18 @@ export function PokemonTable() {
                             <TableCell>{`${pokemon.height} dm`}</TableCell>
                             <TableCell>
                                 <IconButton>
-                                    <Edit color="primary" />
+                                    <AddIcon sx={{width:"50px", height:"50px"}} color="primary" />
                                 </IconButton>
 
                                 <IconButton>
-                                    <Delete color="error" />
+                                    <StarIcon sx={{width:"50px", height:"50px"}} color="error" />
                                 </IconButton>
                             </TableCell>
                         </TableRow>
                     ))}
-                </TableBody>
+                </TableBody>                
             </Table>
+            <Paginacao/>
         </TableContainer>
     )
 }
