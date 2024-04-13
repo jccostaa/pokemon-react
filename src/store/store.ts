@@ -6,7 +6,8 @@ import { persistedReducer } from './rootReducer'
 export const store = configureStore({
   reducer: persistedReducer,
   middleware: (defaultMiddleware) => defaultMiddleware({
-    serializableCheck: false
+    serializableCheck: false,
+    immutableCheck: false
   })
 })
 

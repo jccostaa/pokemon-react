@@ -1,4 +1,4 @@
-import { PokemonTable } from "../components/PokemonCards";
+import { PokemonTable } from "../components/PokemonTable";
 
 export function PokemonPage(){
 

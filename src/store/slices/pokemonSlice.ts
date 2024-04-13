@@ -1,36 +1,40 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { IPokemon } from "../../types/pokemon.model";
-import { RootState } from "./../store";
-import { listarPokemons } from "../../services/api.service";
+import { buscarPokemonUrl, listarPokemons } from "../../services/api.service";
 
 
-const initialState: IPokemon[] = []
 
+export const pokemonListaThunk = createAsyncThunk('pokemons/list', async ()=>{
 
-export const PokemonListaThunk = createAsyncThunk('pokemons/listar', async (_, config)=>{
-    const state = config.getState() as RootState
+    const pokemonLista = await listarPokemons()
 
-    const pokemons = state.pokemons
-
-    if(!pokemons){
+    if(!pokemonLista){
         return []
     }
 
-    const result = await listarPokemons()
 
-    return result
+    const pokemons: IPokemon[] = []
+
+    for(const item of pokemonLista.results){
+        const pokemon = await buscarPokemonUrl(item.url)
+
+        if(pokemon !== null){
+            pokemons.push(pokemon)
+        }
+    }
+
+    return pokemons
 })
-
 
 
 const pokemonSlice = createSlice({
     name:"pokemons",
-    initialState,
+    initialState:[] as IPokemon[],
     reducers:{},
-    extraReducers:(builder)=>{
-        builder.addCase(PokemonListaThunk.fulfilled,(_,action)=>{
-            return action.payload
-        })
+    extraReducers: (builder) => {
+        builder.addCase(pokemonListaThunk.fulfilled, (_, action) => {
+           return action.payload
+        });
     }
 })
 
