@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Avatar, Button, Card, CardContent, Grid, Icon, IconButton, List, ListItem, ListItemText, Paper, Typography } from "@mui/material";
+import { Avatar, Card, CardContent, Grid, Icon, IconButton, List, ListItem, ListItemText, Paper, Typography } from "@mui/material";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { useNavigate, useParams } from "react-router-dom";
 import { pokemonThunk } from "../store/slices/pokemonUnicoSlice";
@@ -13,26 +13,6 @@ export function DetalhesPokemonPage() {
     const dispatch = useAppDispatch();
     const pokemon = useAppSelector(state => state.pokemonUnico);
     const navigate = useNavigate();
-
-
-    function getStatDescription(index: number) {
-        switch (index) {
-            case 0:
-                return "HP";
-            case 1:
-                return "Attack";
-            case 2:
-                return "Defense";
-            case 3:
-                return "Special Attack";
-            case 4:
-                return "Special Defense";
-            case 5:
-                return "Speed";
-            default:
-                return "";
-        }
-    }
 
 
     useEffect(() => {
@@ -60,7 +40,7 @@ export function DetalhesPokemonPage() {
                             <Typography variant="h5">Stats:</Typography>
                             {pokemon?.stats.map((stat: any, index: number) => (
                                 <ListItem key={index}>
-                                    <ListItemText primary={`${stat.base_stat}: ${getStatDescription(index)}`} />
+                                    <ListItemText primary={`${stat.stat.name}: ${stat.base_stat} `} />
                                 </ListItem>
                             ))}
                         </List>
