@@ -15,14 +15,11 @@ export interface IPokemon {
     name: string;
     height: number;
     sprites: PokemonImage;
-    abilities: IHabilidade[];
+    abilities: any[];
     stats: any[];
 }
 
+
 export interface PokemonImage{
     front_default: string
-}
-
-export interface IHabilidade {
-    effect: string;
 }
