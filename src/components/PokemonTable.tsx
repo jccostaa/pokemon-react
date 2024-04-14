@@ -7,7 +7,8 @@ import {
     TableCell, 
     TableContainer,
     TableHead, 
-    TableRow 
+    TableRow, 
+    capitalize
 } from "@mui/material"
 
 import { useAppDispatch, useAppSelector } from "../store/hooks"
@@ -45,9 +46,9 @@ export function PokemonTable() {
                     {pokemons.map((pokemon) => (
                         <TableRow key={pokemon.id}>
                             <TableCell><Avatar src={pokemon.sprites.front_default} sx={{ height: "100px", width: "100px" }} alt={pokemon.name} /></TableCell>
-                            <TableCell>{pokemon.id}</TableCell>
-                            <TableCell>{pokemon.name}</TableCell>
-                            <TableCell>{`${pokemon.height} dm`}</TableCell>
+                            <TableCell><h3>{`#${pokemon.id}`}</h3></TableCell>
+                            <TableCell><h3>{capitalize(pokemon.name)}</h3></TableCell>
+                            <TableCell><h4>{`${pokemon.height} decimetros`}</h4></TableCell>
                             <TableCell>
                                 <IconButton>
                                     <AddIcon sx={{width:"50px", height:"50px"}} color="primary" />

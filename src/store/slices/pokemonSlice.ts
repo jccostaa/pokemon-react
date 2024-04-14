@@ -3,10 +3,13 @@ import { IPokemon } from "../../types/pokemon.model";
 import { buscarPokemonUrl, listarPokemons } from "../../services/api.service";
 import { RootState } from "../store";
 import { setCount } from "./paginacaoSlice";
+import { setLoading } from "./loadingSlice";
 
 
 
 export const pokemonListaThunk = createAsyncThunk('pokemons/list', async (_, config) => {
+
+    config.dispatch(setLoading(true))
 
     const state = config.getState() as RootState
 
@@ -31,6 +34,7 @@ export const pokemonListaThunk = createAsyncThunk('pokemons/list', async (_, con
             pokemons.push(pokemon)
         }
     }
+    config.dispatch(setLoading(false))
 
     return pokemons
 })
