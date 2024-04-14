@@ -6,13 +6,15 @@ import pokemonReducer from './slices/pokemonSlice'
 import loadingReducer from './slices/loadingSlice'
 import paginacaoReducer from './slices/paginacaoSlice'
 import pokemonUnicoReducer from './slices/pokemonUnicoSlice'
+import pokedexReducer from './slices/pokedexSlice'
 
 
 const rootReducer = combineReducers({
   pokemons: pokemonReducer,
   loading: loadingReducer,
   paginacao:paginacaoReducer,
-  pokemonUnico:pokemonUnicoReducer
+  pokemonUnico:pokemonUnicoReducer,
+  pokedex:pokedexReducer
 })
 
 export const persistedReducer = persistReducer({

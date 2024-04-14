@@ -14,14 +14,13 @@ export function DetalhesPokemonPage() {
     const pokemon = useAppSelector(state => state.pokemonUnico);
     const navigate = useNavigate();
 
-
     useEffect(() => {
         if (!params) {
             return;
         }
         dispatch(pokemonThunk(Number(params.id)));
     }, [dispatch, params]);
-
+    
     return (
         <Card component={Paper} sx={{ maxWidth: 600, margin: "auto", marginY: 10 }}>
             <CardContent>
@@ -33,7 +32,7 @@ export function DetalhesPokemonPage() {
                     <Grid item>
                         <Typography variant="h3">{pokemon?.name}</Typography>
                     </Grid>
-                    <Grid item>Tamanho: {pokemon?.height}decimetros</Grid>
+                    <Grid item>Tamanho: {pokemon?.height} decimetros</Grid>
 
                     <Grid item xs={12} sx={{ display: "flex" }} >
                         <List>

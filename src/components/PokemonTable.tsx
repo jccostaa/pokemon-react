@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { 
     Avatar, 
     IconButton, 
@@ -12,17 +13,26 @@ import {
 } from "@mui/material"
 
 import { useAppDispatch, useAppSelector } from "../store/hooks"
-import { useEffect } from "react"
 import { pokemonListaThunk } from "../store/slices/pokemonSlice"
 
-import AddIcon from '@mui/icons-material/Add';
+import { useEffect } from "react"
+import { useNavigate } from "react-router-dom";
+
 import StarIcon from '@mui/icons-material/LocalActivity';
+import VisibilityIcon from '@mui/icons-material/Visibility';
+
 import { Paginacao } from "./Paginacao";
+import { addPokemon } from "../store/slices/pokedexSlice";
 
 export function PokemonTable() {
     const dispatch = useAppDispatch()
+    const navigate = useNavigate()
 
     const pokemons = useAppSelector((state) => state.pokemons)
+
+    function handleAddPokedex(pokemon:any){
+        dispatch(addPokemon(pokemon))
+    }
 
 
     useEffect(() => {
@@ -38,7 +48,7 @@ export function PokemonTable() {
                         <TableCell>ID</TableCell>
                         <TableCell>Nome</TableCell>
                         <TableCell>Tamanho</TableCell>
-                        <TableCell>Ações</TableCell>
+                        <TableCell>Visualizar | Add na Pokedex</TableCell>
                     </TableRow>
                 </TableHead>
 
@@ -50,11 +60,11 @@ export function PokemonTable() {
                             <TableCell><h3>{capitalize(pokemon.name)}</h3></TableCell>
                             <TableCell><h4>{`${pokemon.height} decimetros`}</h4></TableCell>
                             <TableCell>
-                                <IconButton>
-                                    <AddIcon sx={{width:"50px", height:"50px"}} color="primary" />
+                                <IconButton onClick={()=>{navigate(`/pokemon/${pokemon.id}`)}}>
+                                    <VisibilityIcon sx={{width:"50px", height:"50px"}} color="primary" />
                                 </IconButton>
 
-                                <IconButton>
+                                <IconButton onClick={()=> handleAddPokedex(pokemon)}>
                                     <StarIcon sx={{width:"50px", height:"50px"}} color="error" />
                                 </IconButton>
                             </TableCell>
