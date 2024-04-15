@@ -1,30 +1,14 @@
-# React + TypeScript + Vite
+# PokeAPI Explorer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este é um projeto que facilita a exploração e utilização da PokeAPI v2, permitindo aos usuários acessar informações sobre Pokémon de maneira simples e eficiente. Este aplicativo é ideal para fãs de Pokémon e desenvolvedores que desejam integrar dados de Pokémon em suas próprias aplicações.
 
-Currently, two official plugins are available:
+## Funcionalidades
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Busca de informações detalhadas sobre cada Pokémon.
+- Adicione seus pokemons favoritos em sua pokedex
 
-## Expanding the ESLint configuration
+## Como Usar
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Imagens
+![tela-inicial](https://github.com/jccostaa/pokemon-react/blob/main/src/assets/pokemon-page.JPG)
+![tela-pokemon-stats](https://github.com/jccostaa/pokemon-react/blob/main/src/assets/Pokemon-stats.JPG)
