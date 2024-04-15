@@ -8,7 +8,7 @@ Este é um projeto que facilita a exploração e utilização da PokeAPI v2, per
 - Adicione seus pokemons favoritos em sua pokedex
 
 ## Como Usar
-
+Apenas acesse em: https://pokemon-react-jet.vercel.app/
 ## Imagens
 ![tela-inicial](https://github.com/jccostaa/pokemon-react/blob/main/src/assets/pokemon-page.JPG)
 ![tela-pokemon-stats](https://github.com/jccostaa/pokemon-react/blob/main/src/assets/Pokemon-stats.JPG)
