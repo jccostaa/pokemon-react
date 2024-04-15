@@ -35,7 +35,6 @@ export function PokedexPage() {
                         <TableCell>Avatar</TableCell>
                         <TableCell>ID</TableCell>
                         <TableCell>Nome</TableCell>
-                        <TableCell>Tamanho</TableCell>
                         <TableCell>Remover</TableCell>
                         <TableCell width={1}>
                             <IconButton onClick={() => navigate("/")}>
@@ -51,7 +50,6 @@ export function PokedexPage() {
                             <TableCell><Avatar src={pokemon.sprites.front_default} sx={{ height: "100px", width: "100px" }} alt={pokemon.name} /></TableCell>
                             <TableCell><h3>{`#${pokemon.id}`}</h3></TableCell>
                             <TableCell><h3>{capitalize(pokemon.name)}</h3></TableCell>
-                            <TableCell><h4>{`${pokemon.height} decimetros`}</h4></TableCell>
                             <TableCell>
                                 <IconButton onClick={() => handleRemovePokemon(pokemon.id)} >
                                     <PlaylistRemoveIcon sx={{ width: "50px", height: "50px" }} color="error" />
