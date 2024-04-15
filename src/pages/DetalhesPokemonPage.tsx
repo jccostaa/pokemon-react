@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Avatar, Card, CardContent, Grid, Icon, IconButton, List, ListItem, ListItemText, Paper, Typography } from "@mui/material";
+import { Avatar, Card, CardContent, Grid, IconButton, List, ListItem, ListItemText, Paper, Typography } from "@mui/material";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { useNavigate, useParams } from "react-router-dom";
 import { pokemonThunk } from "../store/slices/pokemonUnicoSlice";
@@ -54,10 +54,8 @@ export function DetalhesPokemonPage() {
                     </Grid>
                     <Grid item>
                     <IconButton onClick={() => navigate("/")}>
-                            <Icon fontSize="large" color="error">
-                                <ReplyIcon />
-                            </Icon>
-                        </IconButton>
+                                <ReplyIcon sx={{ width: "50px", height: "50px" }} color="error" />
+                            </IconButton>
 
                     </Grid>
 

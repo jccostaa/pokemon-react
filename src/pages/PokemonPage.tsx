@@ -1,7 +1,10 @@
 import { PokemonTable } from "../components/PokemonTable";
 
-export function PokemonPage(){
+export function PokemonPage() {
 
-    return(
-        <PokemonTable/>    )
+    return (
+        <>
+            <PokemonTable />
+        </>
+    )
 }

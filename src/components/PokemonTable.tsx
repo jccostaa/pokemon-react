@@ -1,14 +1,14 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { 
-    Avatar, 
-    IconButton, 
-    Paper, 
-    Table, 
-    TableBody, 
-    TableCell, 
+import {
+    Avatar,
+    IconButton,
+    Paper,
+    Table,
+    TableBody,
+    TableCell,
     TableContainer,
-    TableHead, 
-    TableRow, 
+    TableHead,
+    TableRow,
     capitalize
 } from "@mui/material"
 
@@ -20,6 +20,7 @@ import { useNavigate } from "react-router-dom";
 
 import StarIcon from '@mui/icons-material/LocalActivity';
 import VisibilityIcon from '@mui/icons-material/Visibility';
+import CatchingPokemonIcon from '@mui/icons-material/CatchingPokemon';
 
 import { Paginacao } from "./Paginacao";
 import { addPokemon } from "../store/slices/pokedexSlice";
@@ -30,7 +31,7 @@ export function PokemonTable() {
 
     const pokemons = useAppSelector((state) => state.pokemons)
 
-    function handleAddPokedex(pokemon:any){
+    function handleAddPokedex(pokemon: any) {
         dispatch(addPokemon(pokemon))
     }
 
@@ -49,6 +50,11 @@ export function PokemonTable() {
                         <TableCell>Nome</TableCell>
                         <TableCell>Tamanho</TableCell>
                         <TableCell>Visualizar | Add na Pokedex</TableCell>
+                        <TableCell width={1}>
+                            <IconButton onClick={() => { navigate(`/pokedex`) }}>
+                                <CatchingPokemonIcon sx={{ width: "50px", height: "50px" }} color="error" />
+                            </IconButton>
+                        </TableCell>
                     </TableRow>
                 </TableHead>
 
@@ -59,20 +65,20 @@ export function PokemonTable() {
                             <TableCell><h3>{`#${pokemon.id}`}</h3></TableCell>
                             <TableCell><h3>{capitalize(pokemon.name)}</h3></TableCell>
                             <TableCell><h4>{`${pokemon.height} decimetros`}</h4></TableCell>
-                            <TableCell>
-                                <IconButton onClick={()=>{navigate(`/pokemon/${pokemon.id}`)}}>
-                                    <VisibilityIcon sx={{width:"50px", height:"50px"}} color="primary" />
+                            <TableCell width={"250px"}>
+                                <IconButton onClick={() => { navigate(`/pokemon/${pokemon.id}`) }}>
+                                    <VisibilityIcon sx={{ width: "50px", height: "50px" }} color="primary" />
                                 </IconButton>
 
-                                <IconButton onClick={()=> handleAddPokedex(pokemon)}>
-                                    <StarIcon sx={{width:"50px", height:"50px"}} color="error" />
+                                <IconButton onClick={() => handleAddPokedex(pokemon)}>
+                                    <StarIcon sx={{ width: "50px", height: "50px" }} color="error" />
                                 </IconButton>
                             </TableCell>
                         </TableRow>
                     ))}
-                </TableBody>                
+                </TableBody>
             </Table>
-            <Paginacao/>
+            <Paginacao />
         </TableContainer>
     )
 }

@@ -6,6 +6,7 @@ import { RouterProvider } from "react-router-dom"
 import { Header } from "./components/Header"
 import { CssBaseline } from "@mui/material"
 import { LoadingModal } from "./components/ModalLoading"
+import { Footer } from "./components/Footer"
 
 
 export function App() {
@@ -17,6 +18,7 @@ export function App() {
       <Header />
       <PersistGate loading={null} persistor={persitedStore} />
       <RouterProvider router={router} />
+      <Footer/>
     </ReduxProvider>
   )
 }
